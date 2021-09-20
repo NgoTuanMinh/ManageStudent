@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import styles from './Counter.module.css';
 import {
   decrement,
   increment,
-  incrementByAmount,
-  incrementAsync,
-  incrementIfOdd,
-  selectCount,
+  incrementByAmount, incrementBySaga, incrementIfOdd,
+  selectCount
 } from './counterSlice';
-import styles from './Counter.module.css';
+
 
 export function Counter() {
   const count = useAppSelector(selectCount);
@@ -52,9 +50,9 @@ export function Counter() {
         </button>
         <button
           className={styles.asyncButton}
-          onClick={() => dispatch(incrementAsync(incrementValue))}
+          onClick={() => dispatch(incrementBySaga(incrementValue))}
         >
-          Add Async
+          Add Async By Saga
         </button>
         <button
           className={styles.button}
